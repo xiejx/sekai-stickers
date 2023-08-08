@@ -8,29 +8,30 @@ import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
 import Picker from "./components/Picker";
 import Info from "./components/Info";
-import getConfiguration from "./utils/config";
+// import getConfiguration from "./utils/config";
 // import log from "./utils/log";
 import { bannerViewed, setBannerViewed } from "./utils/banner";
 
 const { ClipboardItem } = window;
 
 function App() {
-  const [config, setConfig] = useState(null);
+  // const [config, setConfig] = useState(null);
   const [bannerView, setBannerView] = useState(bannerViewed());
 
   // using this to trigger the useEffect because lazy to think of a better way
-  const [rand, setRand] = useState(0);
-  useEffect(() => {
-    try {
-      const data = async () => {
-        const res = await getConfiguration();
-        setConfig(res);
-      };
-      data();
-    } catch (error) {
-      console.log(error);
-    }
-  }, [rand]);
+  // 不需要修改配置项的内容
+  // const [rand, setRand] = useState(0);
+  // useEffect(() => {
+  //   try {
+  //     const data = async () => {
+  //       const res = await getConfiguration();
+  //       setConfig(res);
+  //     };
+  //     data();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, [rand]);
 
   const [infoOpen, setInfoOpen] = useState(false);
 
@@ -136,7 +137,7 @@ function App() {
     link.click();
     // 去掉请求
     // await log(characters[character].id, characters[character].name, "download");
-    setRand(rand + 1);
+    // setRand(rand + 1);
   };
 
   function b64toBlob(b64Data, contentType = null, sliceSize = null) {
@@ -165,7 +166,7 @@ function App() {
     ]);
     // 去掉请求
     // await log(characters[character].id, characters[character].name, "copy");
-    setRand(rand + 1);
+    // setRand(rand + 1);
   };
 
   return (
@@ -173,7 +174,7 @@ function App() {
       {/*
         下面的Info组件是点击页面上的Info按钮之后显示的内容
        */}
-      <Info open={infoOpen} handleClose={handleClose} config={config} />
+      <Info open={infoOpen} handleClose={handleClose} config={null} />
       {!bannerView && (
         <div className="bannercontainer">
           <div className="bannermessage">
