@@ -9,7 +9,7 @@ import Switch from "@mui/material/Switch";
 import Picker from "./components/Picker";
 import Info from "./components/Info";
 import getConfiguration from "./utils/config";
-import log from "./utils/log";
+// import log from "./utils/log";
 import { bannerViewed, setBannerViewed } from "./utils/banner";
 
 const { ClipboardItem } = window;
@@ -134,7 +134,8 @@ function App() {
     link.download = `${characters[character].name}_st.ayaka.one.png`;
     link.href = canvas.toDataURL();
     link.click();
-    await log(characters[character].id, characters[character].name, "download");
+    // 去掉请求
+    // await log(characters[character].id, characters[character].name, "download");
     setRand(rand + 1);
   };
 
@@ -162,12 +163,16 @@ function App() {
         "image/png": b64toBlob(canvas.toDataURL().split(",")[1]),
       }),
     ]);
-    await log(characters[character].id, characters[character].name, "copy");
+    // 去掉请求
+    // await log(characters[character].id, characters[character].name, "copy");
     setRand(rand + 1);
   };
 
   return (
     <div className="App">
+      {/*
+        下面的Info组件是点击页面上的Info按钮之后显示的内容
+       */}
       <Info open={infoOpen} handleClose={handleClose} config={config} />
       {!bannerView && (
         <div className="bannercontainer">
@@ -200,9 +205,10 @@ function App() {
           </div>
         </div>
       )}
-      <div className="counter">
+      {/* 去掉制作贴纸次数的内容 */}
+      {/* <div className="counter">
         Total Stickers you made: {config?.total || "Not available"}
-      </div>
+      </div> */}
       <div className="container">
         <div className="vertical">
           <div className="canvas">

@@ -141,13 +141,14 @@ export default function Info({ open, handleClose, config }) {
                 />
               </ListItem>
             </List>
-            <Typography variant="h6" component="h3">
+            {/* 去掉计算总的使用人数的内容 */}
+            {/* <Typography variant="h6" component="h3">
               Total stickers made using the app:
               <br />
               {config?.global
                 ? config?.global.toLocaleString() + " Sticker"
                 : "not available"}
-            </Typography>
+            </Typography> */}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
